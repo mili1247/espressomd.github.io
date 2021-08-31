@@ -1,0 +1,27 @@
+var DipolarBarnesHut__cuda_8cuh =
+[
+    [ "BHData", "structBHData.html", "structBHData" ],
+    [ "DIPOLARBARNESHUT_CUH_", "DipolarBarnesHut__cuda_8cuh.html#a457ff4f39de23cf54e8103da245546ed", null ],
+    [ "FACTOR1", "DipolarBarnesHut__cuda_8cuh.html#a4b50b75600a4385c7affd1c82998eef2", null ],
+    [ "FACTOR2", "DipolarBarnesHut__cuda_8cuh.html#ab64e4c5074162a06e839885cba787ecc", null ],
+    [ "FACTOR3", "DipolarBarnesHut__cuda_8cuh.html#a996f9a6fd15089ce39bccf4143a01a50", null ],
+    [ "FACTOR4", "DipolarBarnesHut__cuda_8cuh.html#a07bf054e2784d6caf726da0080fc176b", null ],
+    [ "FACTOR5", "DipolarBarnesHut__cuda_8cuh.html#a48c2c174863ddcf744426fb56be31ef6", null ],
+    [ "MAXDEPTH", "DipolarBarnesHut__cuda_8cuh.html#a0a852ddde438845110943cb3e2a0beea", null ],
+    [ "THREADS1", "DipolarBarnesHut__cuda_8cuh.html#a6cac1d001fa4d6c00a794bc587dac1d2", null ],
+    [ "THREADS2", "DipolarBarnesHut__cuda_8cuh.html#a86edd6193b14e2e0597fddab89881e3a", null ],
+    [ "THREADS3", "DipolarBarnesHut__cuda_8cuh.html#a508375c867f31fb42c1135881ddfd8f3", null ],
+    [ "THREADS4", "DipolarBarnesHut__cuda_8cuh.html#a8c1f847aac207a6afbed48210310c789", null ],
+    [ "THREADS5", "DipolarBarnesHut__cuda_8cuh.html#a12498f409c0023a090abf74f90b511f8", null ],
+    [ "WARPSIZE", "DipolarBarnesHut__cuda_8cuh.html#a010e88cb633ae658953c85ac37b7f6d1", null ],
+    [ "allocBHmemCopy", "DipolarBarnesHut__cuda_8cuh.html#ab918e39db8f5df11238e699f420de2af", null ],
+    [ "buildBoxBH", "DipolarBarnesHut__cuda_8cuh.html#a0850d3cd2d514b5a126324134303138c", null ],
+    [ "buildTreeBH", "DipolarBarnesHut__cuda_8cuh.html#aea6478168cdcd339bcf5093871371ccf", null ],
+    [ "energyBH", "DipolarBarnesHut__cuda_8cuh.html#a83fa5906d2392add50d90f94ee638dd9", null ],
+    [ "fillConstantPointers", "DipolarBarnesHut__cuda_8cuh.html#a398990c9c6f927bf0ebd8b4685b5cd88", null ],
+    [ "forceBH", "DipolarBarnesHut__cuda_8cuh.html#a1a676f3bf768da660d644141a044ba15", null ],
+    [ "initBHgpu", "DipolarBarnesHut__cuda_8cuh.html#a6571a162cbeabeba3df30b885970d123", null ],
+    [ "setBHPrecision", "DipolarBarnesHut__cuda_8cuh.html#ae96215f6afd4efb7363a88975e5cb2b6", null ],
+    [ "sortBH", "DipolarBarnesHut__cuda_8cuh.html#adc07737cd159d3ddd816401c7e69b971", null ],
+    [ "summarizeBH", "DipolarBarnesHut__cuda_8cuh.html#a7c44c62645c05c72747f1452ed682ff8", null ]
+];

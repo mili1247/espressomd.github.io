@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>espressomd.io.writer package &#8212; ESPResSo documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bibtex.css" />
+    <link rel="stylesheet" type="text/css" href="_static/blockquotes.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="espressomd.io package" href="espressomd.io.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="espressomd.io.html" title="espressomd.io package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ESPResSo doc</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >espressomd</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="espressomd.html" >espressomd package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="espressomd.io.html" accesskey="U">espressomd.io package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">espressomd.io.writer package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="espressomd-io-writer-package">
+<h1>espressomd.io.writer package<a class="headerlink" href="#espressomd-io-writer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-espressomd.io.writer.h5md">
+<span id="espressomd-io-writer-h5md-module"></span><h2>espressomd.io.writer.h5md module<a class="headerlink" href="#module-espressomd.io.writer.h5md" title="Permalink to this headline">¶</a></h2>
+<p>Interface module for the H5md core implementation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.H5md">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">espressomd.io.writer.h5md.</span></span><span class="sig-name descname"><span class="pre">H5md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">file_path</span></em>, <em class="sig-param"><span class="pre">unit_system=&lt;espressomd.io.writer.h5md.UnitSystem</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#H5md"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.H5md" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>H5md file object.</p>
+<p>Used for accessing the H5MD core implementation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bonds will be written to the file automatically if they exist.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path to the trajectory file.</p></li>
+<li><p><strong>unit_system</strong> (<a class="reference internal" href="#espressomd.io.writer.h5md.UnitSystem" title="espressomd.io.writer.h5md.UnitSystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnitSystem</span></code></a>, optional) – Physical units for the data.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.H5md.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#H5md.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.H5md.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the H5md file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.H5md.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#H5md.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.H5md.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the H5md flush method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.H5md.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#H5md.get_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.H5md.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the parameters from the script interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.H5md.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#H5md.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.H5md.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the H5md write method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="espressomd.io.writer.h5md.UnitSystem">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">espressomd.io.writer.h5md.</span></span><span class="sig-name descname"><span class="pre">UnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/h5md.html#UnitSystem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.h5md.UnitSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data class for writing H5MD trajectories with
+<a class="reference external" href="https://nongnu.org/h5md/modules/units.html">physical units</a>.
+There are four settable units: ‘mass’, ‘length’, ‘time’, ‘charge’.
+Units should be written as strings following the specifications defined
+<a class="reference external" href="https://nongnu.org/h5md/modules/units.html#unit-string">here</a>,
+e.g. <code class="docutils literal notranslate"><span class="pre">UnitSystem(time='ps',</span> <span class="pre">mass='u',</span> <span class="pre">length='nm',</span> <span class="pre">charge='e')</span></code>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-espressomd.io.writer.vtf">
+<span id="espressomd-io-writer-vtf-module"></span><h2>espressomd.io.writer.vtf module<a class="headerlink" href="#module-espressomd.io.writer.vtf" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="espressomd.io.writer.vtf.vtf_pid_map">
+<span class="sig-prename descclassname"><span class="pre">espressomd.io.writer.vtf.</span></span><span class="sig-name descname"><span class="pre">vtf_pid_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/vtf.html#vtf_pid_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.vtf.vtf_pid_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a VTF particle index map to ESPResSo <code class="docutils literal notranslate"><span class="pre">id</span></code>.
+This fills the gap for particle ID’s as required by VMD.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system</strong> (<a class="reference internal" href="espressomd.html#espressomd.system.System" title="espressomd.system.System"><code class="xref py py-obj docutils literal notranslate"><span class="pre">espressomd.system.System</span></code></a>)</p></li>
+<li><p><strong>types</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Specifies the particle types. The id mapping depends on which
+particles are going to be printed. This should be the same as
+the one used in <a class="reference internal" href="#espressomd.io.writer.vtf.writevsf" title="espressomd.io.writer.vtf.writevsf"><code class="xref py py-func docutils literal notranslate"><span class="pre">writevsf()</span></code></a> and <a class="reference internal" href="#espressomd.io.writer.vtf.writevcf" title="espressomd.io.writer.vtf.writevcf"><code class="xref py py-func docutils literal notranslate"><span class="pre">writevcf()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary where the values are the VTF indices and the keys
+are the ESPresSo particle <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="espressomd.io.writer.vtf.writevcf">
+<span class="sig-prename descclassname"><span class="pre">espressomd.io.writer.vtf.</span></span><span class="sig-name descname"><span class="pre">writevcf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/vtf.html#writevcf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.vtf.writevcf" title="Permalink to this definition">¶</a></dt>
+<dd><p>writes a VCF (VTF Coordinate Format) to a file.
+This can be used to write a timestep to a VTF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system</strong> (<a class="reference internal" href="espressomd.html#espressomd.system.System" title="espressomd.system.System"><code class="xref py py-obj docutils literal notranslate"><span class="pre">espressomd.system.System</span></code></a>)</p></li>
+<li><p><strong>types</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Specifies the particle types. The string ‘all’ will write all particles</p></li>
+<li><p><strong>fp</strong> (<em>file</em>) – File pointer to write to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="espressomd.io.writer.vtf.writevsf">
+<span class="sig-prename descclassname"><span class="pre">espressomd.io.writer.vtf.</span></span><span class="sig-name descname"><span class="pre">writevsf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/espressomd/io/writer/vtf.html#writevsf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#espressomd.io.writer.vtf.writevsf" title="Permalink to this definition">¶</a></dt>
+<dd><p>writes a VST (VTF Structure Format) to a file.
+This can be used to write the header of a VTF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system</strong> (<a class="reference internal" href="espressomd.html#espressomd.system.System" title="espressomd.system.System"><code class="xref py py-obj docutils literal notranslate"><span class="pre">espressomd.system.System</span></code></a>)</p></li>
+<li><p><strong>types</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Specifies the particle types. The string ‘all’ will write all particles</p></li>
+<li><p><strong>fp</strong> (<em>file</em>) – File pointer to write to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-espressomd.io.writer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-espressomd.io.writer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">espressomd.io.writer package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-espressomd.io.writer.h5md">espressomd.io.writer.h5md module</a></li>
+<li><a class="reference internal" href="#module-espressomd.io.writer.vtf">espressomd.io.writer.vtf module</a></li>
+<li><a class="reference internal" href="#module-espressomd.io.writer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="espressomd.io.html" title="espressomd.io package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ESPResSo doc</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >espressomd</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="espressomd.html" >espressomd package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="espressomd.io.html" >espressomd.io package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">espressomd.io.writer package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018-2020, The ESPResSo project.
+      Last updated on Aug 31, 2021.
+    </div>
+  </body>
+</html>

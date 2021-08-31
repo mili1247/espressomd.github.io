@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>espressomd.io.writer.h5md &#8212; ESPResSo documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bibtex.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/blockquotes.css" />
+    
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">ESPResSo doc</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../../espressomd.html" accesskey="U">espressomd</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">espressomd.io.writer.h5md</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for espressomd.io.writer.h5md</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2010-2019 The ESPResSo project</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ESPResSo.</span>
+<span class="c1">#</span>
+<span class="c1"># ESPResSo is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># ESPResSo is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;Interface module for the H5md core implementation.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">...script_interface</span> <span class="k">import</span> <span class="n">PScriptInterface</span>  <span class="c1"># pylint: disable=import</span>
+<span class="kn">from</span> <span class="nn">...code_info</span> <span class="k">import</span> <span class="n">features</span>
+
+
+<div class="viewcode-block" id="UnitSystem"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.UnitSystem">[docs]</a><span class="k">class</span> <span class="nc">UnitSystem</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data class for writing H5MD trajectories with</span>
+<span class="sd">    `physical units &lt;https://nongnu.org/h5md/modules/units.html&gt;`_.</span>
+<span class="sd">    There are four settable units: &#39;mass&#39;, &#39;length&#39;, &#39;time&#39;, &#39;charge&#39;.</span>
+<span class="sd">    Units should be written as strings following the specifications defined</span>
+<span class="sd">    `here &lt;https://nongnu.org/h5md/modules/units.html#unit-string&gt;`_,</span>
+<span class="sd">    e.g. ``UnitSystem(time=&#39;ps&#39;, mass=&#39;u&#39;, length=&#39;nm&#39;, charge=&#39;e&#39;)``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="s1">&#39;unknown dimension &#39;</span> <span class="o">+</span> <span class="n">key</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{self.length}</span><span class="s1"> </span><span class="si">{self.mass}</span><span class="s1"> </span><span class="si">{self.time}</span><span class="s1">-2&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">force</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{self.length}</span><span class="s1"> </span><span class="si">{self.time}</span><span class="s1">-1&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></div>
+
+
+<span class="k">if</span> <span class="s1">&#39;H5MD&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">features</span><span class="p">():</span>
+    <span class="k">class</span> <span class="nc">H5md</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;H5md not available.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+<div class="viewcode-block" id="H5md"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.H5md">[docs]</a>    <span class="k">class</span> <span class="nc">H5md</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;H5md file object.</span>
+
+<span class="sd">        Used for accessing the H5MD core implementation.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">           Bonds will be written to the file automatically if they exist.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        file_path : :obj:`str`</span>
+<span class="sd">            Path to the trajectory file.</span>
+<span class="sd">        unit_system : :obj:`UnitSystem`, optional</span>
+<span class="sd">            Physical units for the data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">unit_system</span><span class="o">=</span><span class="n">UnitSystem</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">h5md_instance</span> <span class="o">=</span> <span class="n">PScriptInterface</span><span class="p">(</span>
+                <span class="s2">&quot;ScriptInterface::Writer::H5md&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">script_path</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">mass_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span> <span class="n">length_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> 
+                <span class="n">time_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">time</span><span class="p">,</span>
+                <span class="n">force_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">force</span><span class="p">,</span>
+                <span class="n">velocity_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span>
+                <span class="n">charge_unit</span><span class="o">=</span><span class="n">unit_system</span><span class="o">.</span><span class="n">charge</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="H5md.get_params"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.H5md.get_params">[docs]</a>        <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Get the parameters from the script interface.&quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">h5md_instance</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="H5md.write"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.H5md.write">[docs]</a>        <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Call the H5md write method.&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">h5md_instance</span><span class="o">.</span><span class="n">call_method</span><span class="p">(</span><span class="s2">&quot;write&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="H5md.flush"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.H5md.flush">[docs]</a>        <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Call the H5md flush method.&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">h5md_instance</span><span class="o">.</span><span class="n">call_method</span><span class="p">(</span><span class="s2">&quot;flush&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="H5md.close"><a class="viewcode-back" href="../../../../espressomd.io.writer.html#espressomd.io.writer.h5md.H5md.close">[docs]</a>        <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Close the H5md file.&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">h5md_instance</span><span class="o">.</span><span class="n">call_method</span><span class="p">(</span><span class="s2">&quot;close&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">ESPResSo doc</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../../espressomd.html" >espressomd</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">espressomd.io.writer.h5md</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018-2020, The ESPResSo project.
+      Last updated on Aug 31, 2021.
+    </div>
+  </body>
+</html>
